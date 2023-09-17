@@ -161,10 +161,16 @@ const TaskPage = () => {
                     </>
                   ) : (
                     <>
-                  <span className={`${styles.taskTitle} ${task.executed ? styles.completed : ''}`}>
+                  <span className={styles.taskTitle}>
                     {task.title}
                   </span>
-                      <p className={styles.taskDescription}>{task.description}</p>
+                      <div className={styles.taskDescription}>
+                        {task.description.split('\n').map((text, index) => (
+                          <p key={index}>
+                            {text}
+                          </p>
+                        ))}
+                      </div>
 
                       <div>
                         <button onClick={() => handleEditTask(task.id)} className={styles.editButton}><AiFillEdit /></button>
